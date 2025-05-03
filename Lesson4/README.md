@@ -1,37 +1,27 @@
+# Why do We need Kubernetes?
 
-# What is Kubernetes - Kubernetes Architecture ☸️
+Kubernetes is needed to effectively manage and orchestrate containerized applications, especially in large-scale, complex deployments. It automates many aspects of container management, including deployment, scaling, and maintenance, making it easier and more reliable to run these applications. 
 
-Kubernetes is an open-source system that automates the deployment, scaling, and management of containerized applications.
-
-## Kubernetes Architecture
-
-![image](https://github.com/piyushsachdeva/CKA-2024/assets/40286378/f15fbf28-5d18-4469-8a28-edd13678cbbf)
-
-## Master/Control plane Node V/s Worker Node
-
-![image](https://github.com/piyushsachdeva/CKA-2024/assets/40286378/ef04ec3d-9f3a-4ac5-8a6a-31e877bfabf3)
-
-## ApiServer :- Client interacts with the cluster using ApiServer
-
-![image](https://github.com/piyushsachdeva/CKA-2024/assets/40286378/b8aeb299-9fc9-49da-9c87-0a6eb948ebd1)
-
-## Scheduler: decide which pod to be scheduled on which node based on different factors
-
-![image](https://github.com/piyushsachdeva/CKA-2024/assets/40286378/189208b6-a01e-4e3f-baf9-ae9a9d0f3daf)
-
-## Controller Manager
-
-![image](https://github.com/piyushsachdeva/CKA-2024/assets/40286378/9aece452-6d76-452f-9c89-0f7825151312)
-
-## ETCD Server - Key value database that stores the cluster state and configuration
-
-![image](https://github.com/piyushsachdeva/CKA-2024/assets/40286378/81e037e3-78f0-41a7-8589-f2b4ec3af511)
-
-## Kubelet - Node-level agent that helps container management and receives instructions from Api server
-
-![image](https://github.com/piyushsachdeva/CKA-2024/assets/40286378/bd178509-c49c-4206-bc11-147ac91d2713)
-
-## Kube proxy - Pod to pod communication
-
-![image](https://github.com/piyushsachdeva/CKA-2024/assets/40286378/e99ec3f5-5d73-4554-99d4-a7905d463f64)
-
+Here's a more detailed explanation of why you might need Kubernetes:
+1. Automation and Simplification:
+Kubernetes automates the deployment, scaling, and management of containerized applications. 
+This reduces the manual effort and complexity associated with running containers, allowing developers and operators to focus on building and improving applications rather than managing infrastructure. 
+2. Scalability and High Availability: 
+Kubernetes allows you to easily scale your applications up or down based on demand.
+It provides self-healing capabilities, automatically restarting or replacing containers that fail.
+It ensures high availability by distributing workloads across multiple nodes in a cluster.
+3. Resource Management and Optimization: 
+Kubernetes helps you manage resources efficiently by automatically allocating them to containers based on their needs.
+It can also automatically scale resources up or down to match demand, optimizing resource utilization.
+4. Service Discovery and Load Balancing:
+Kubernetes provides built-in service discovery, allowing containers to easily find and communicate with each other. 
+It also provides load balancing, distributing traffic across multiple containers to ensure high availability and performance. 
+5. Rolling Updates and Blue/Green Deployments: 
+Kubernetes simplifies the process of rolling out updates to your applications, minimizing downtime and ensuring a smooth transition.
+It also supports blue/green deployments, allowing you to deploy new versions of your application without interrupting the current version.
+6. Security and Compliance: 
+Kubernetes provides robust security features, including access control, network policies, and secret management.
+It helps you meet compliance requirements by providing a secure and reliable platform for running your applications.
+7. Infrastructure Portability: 
+Kubernetes is designed to be portable, meaning you can run your applications on any infrastructure, whether it's on-premises, in the cloud, or in a hybrid environment.
+This allows you to choose the infrastructure that best suits your needs without being tied to a specific vendor.
