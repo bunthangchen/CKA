@@ -1,7 +1,7 @@
 # Certified Kubernetes Administrator(CKA) 
 
 ### 1: Docker Fundamentals
-**Status**:  check out 👉 [Resources/01](https://github.com/bunthangchen/CKA-2025/tree/d3d7a898a52f2cf82b19528145c94ec2fdbdb767/Resources/01)  folder for notes and useful links ✅
+**Status**:  check out 👉 [bunthangchen/CKA/Lesson1]  folder for notes and useful links ✅
 - What is Docker?
 - How is it different from Virtual Machines
 -  Docker Architecture
