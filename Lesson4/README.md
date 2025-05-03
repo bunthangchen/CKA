@@ -32,6 +32,18 @@ Maintains network rules on nodes to implement Services.
 #### Container runtime
 Software responsible for running containers.
 
+### Addons
+Addons extend the functionality of Kubernetes. A few important examples include:
+
+#### DNS
+For cluster-wide DNS resolution
+#### Web UI (Dashboard)
+For cluster management via a web interface
+#### Container Resource Monitoring
+For collecting and storing container metrics
+#### Cluster-level Logging
+For saving container logs to a central log store
+
 ![image](https://github.com/piyushsachdeva/CKA-2024/assets/40286378/ef04ec3d-9f3a-4ac5-8a6a-31e877bfabf3)
 
 ## ApiServer :- Client interacts with the cluster using ApiServer
