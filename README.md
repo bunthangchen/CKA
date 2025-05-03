@@ -15,21 +15,22 @@
 - docker pull , push, tag etc
 
 ## 3: Docker Multi-Stage Builds
-**Status**:  check out 👉 
+**Status**:  check out 👉 [Lesson3](https://github.com/bunthangchen/CKA/tree/d074483703b97e522eeffee1726ac390e8c8c984/Lesson3) folder for notes and useful links ✅
+
 - How to write a dockerfile for multistage build
 - Benefits of multi-stage builds
 - Other docker best practices
 
 ## 4: Why do We need Kubernetes?
-**Status**:  check out 👉 
+**Status**:  check out 👉 [Lesson4](https://github.com/bunthangchen/CKA/tree/d074483703b97e522eeffee1726ac390e8c8c984/Lesson4) folder for notes and useful links ✅
 
 ## 5: Kubernetes Architecture
-**Status**: check out 👉 
+**Status**: check out 👉 [Lesson5](https://github.com/bunthangchen/CKA/tree/d074483703b97e522eeffee1726ac390e8c8c984/Lesson5) folder for notes and useful links ✅
 - Control plane VS Worker Nodes
 - Overview of control plane components
 
 ## 6: Install Kubernetes Cluster locally
-**Status**:  check out 👉 
+**Status**:  check out 👉 [Lesson6](https://github.com/bunthangchen/CKA/tree/d074483703b97e522eeffee1726ac390e8c8c984/Lesson6) folder for notes and useful links ✅
 
 - Install Kind cluster locally
 - How to access the cluster
