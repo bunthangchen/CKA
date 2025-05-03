@@ -12,37 +12,37 @@ Kubernetes is an open-source system that automates the deployment, scaling, and 
 Manage the overall state of the cluster:
 
 #### kube-apiserver
-    The core component server that exposes the Kubernetes HTTP API
+The core component server that exposes the Kubernetes HTTP API
 #### etcd
-    Consistent and highly-available key value store for all API server data
+Consistent and highly-available key value store for all API server data
 #### kube-scheduler
-    Looks for Pods not yet bound to a node, and assigns each Pod to a suitable node.
+Looks for Pods not yet bound to a node, and assigns each Pod to a suitable node.
 #### kube-controller-manager
-    Runs controllers to implement Kubernetes API behavior.
+Runs controllers to implement Kubernetes API behavior.
 #### cloud-controller-manager (optional)
-    Integrates with underlying cloud provider(s).
+Integrates with underlying cloud provider(s).
 
 ### Node Components
-    Run on every node, maintaining running pods and providing the Kubernetes runtime environment:
+Run on every node, maintaining running pods and providing the Kubernetes runtime environment:
 
 #### kubelet
-    Ensures that Pods are running, including their containers.
+Ensures that Pods are running, including their containers.
 #### kube-proxy 
-    Maintains network rules on nodes to implement Services.
+Maintains network rules on nodes to implement Services.
 #### Container runtime
-    Software responsible for running containers.
+Software responsible for running containers.
 
 ### Addons
 Addons extend the functionality of Kubernetes. A few important examples include:
 
 #### DNS
-    For cluster-wide DNS resolution
+For cluster-wide DNS resolution
 #### Web UI (Dashboard)
-    For cluster management via a web interface
+For cluster management via a web interface
 #### Container Resource Monitoring
-    For collecting and storing container metrics
+For collecting and storing container metrics
 #### Cluster-level Logging
-    For saving container logs to a central log store
+For saving container logs to a central log store
 
 ![image](https://github.com/piyushsachdeva/CKA-2024/assets/40286378/ef04ec3d-9f3a-4ac5-8a6a-31e877bfabf3)
 
