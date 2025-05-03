@@ -10,7 +10,7 @@
 -  Docker commands
     
 ### 2: Dockerize an application
-**Status**:  check out 👉 
+**Status**:  check out 👉 [Lesson2](https://github.com/bunthangchen/CKA/tree/a629af4a707dee029e40d8a5622e0599ce06c729/Lesson2) folder for notes and useful links ✅
 - What is Dockerfile, and how do you write it?
 - docker pull , push, tag etc
 
