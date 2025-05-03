@@ -7,7 +7,7 @@ Kubernetes is an open-source system that automates the deployment, scaling, and 
 
 ![image](https://github.com/piyushsachdeva/CKA-2024/assets/40286378/f15fbf28-5d18-4469-8a28-edd13678cbbf)
 
-## Master/Control plane Node V/s Worker Node ( Node is nothing but a Virtual machine)
+## Master/Control plane Node V/s Worker Node
 ### Control Plane Components 
 Manage the overall state of the cluster:
 
@@ -23,6 +23,15 @@ Runs controllers to implement Kubernetes API behavior.
 Integrates with underlying cloud provider(s).
 
 ### Node Components
+Run on every node, maintaining running pods and providing the Kubernetes runtime environment:
+
+#### kubelet
+Ensures that Pods are running, including their containers.
+#### kube-proxy 
+Maintains network rules on nodes to implement Services.
+#### Container runtime
+Software responsible for running containers.
+
 ![image](https://github.com/piyushsachdeva/CKA-2024/assets/40286378/ef04ec3d-9f3a-4ac5-8a6a-31e877bfabf3)
 
 ## ApiServer :- Client interacts with the cluster using ApiServer
