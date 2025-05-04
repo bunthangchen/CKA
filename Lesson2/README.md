@@ -13,7 +13,7 @@ https://www.docker.com/products/docker-desktop/
 ```
 
 ## Dockerfile reference
-o read through all of the instructions or go into greater detail, check out the [Dockerfile reference](https://docs.docker.com/reference/dockerfile/)
+To read through all of the instructions or go into greater detail, check out the [Dockerfile reference](https://docs.docker.com/reference/dockerfile/)
 
 ## Get started
 - Clone a sample git repository using the below command or use your project for the demo:
