@@ -1,70 +1,69 @@
-# static pods, manual scheduling, labels, and selectors in Kubernetes 📘🚀
+#  Taints and Tolerations in Kubernetes 📘🚀
 
 
-## 📌 Labels and Selectors in Kubernetes
+# Taints and Tolerations in Kubernetes 🚧📜
 
-### Labels 🏷️
-Labels are key-value pairs attached to Kubernetes objects like pods, services, and deployments. They help organize and group resources based on criteria that make sense to you.
-
-**Examples of Labels:**
-- `environment: production`
-- `type: backend`
-- `tier: frontend`
-- `application: my-app`
-
-### Selectors 🔍
-Selectors filter Kubernetes objects based on their labels. This is incredibly useful for querying and managing a subset of objects that meet specific criteria.
-
-**Common Usage:**
-- **Pods**: `kubectl get pods --selector app=my-app`
-- **Deployments**: Used to filter the pods managed by the deployment.
-- **Services**: Filter the pods to which the service routes traffic.
-
-### Labels vs. Namespaces 🌍
-- **Labels**: Organize resources within the same or across namespaces.
-- **Namespaces**: Provide a way to isolate resources from each other within a cluster.
-
-### Annotations 📝
-Annotations are similar to labels but attach non-identifying metadata to objects. For example, recording the release version of an application for information purposes or last applied configuration details etc.
+In this guide, we'll explore taints and tolerations in Kubernetes, essential tools for managing where pods can be scheduled in your cluster.
 
 ---
 
-## 🛠️ Static Pods
+## Taints: Putting Up Fences 🚫
 
-Static Pods are special types of pods managed directly by the `kubelet` on each node rather than through the Kubernetes API server.
+Think of taints as "only you are allowed" signs on your Kubernetes nodes. A taint marks a node with a specific characteristic, such as `"gpu=true"`. By default, pods cannot be scheduled on tainted nodes unless they have a special permission called toleration. When a toleration on a pod matches with the taint on the node then only that pod will be scheduled on that node.
 
-### Key Characteristics of Static Pods:
-- **Not Managed by the Scheduler**: Unlike deployments or replicasets, the Kubernetes scheduler does not manage static pods.
-- **Defined on the Node**: Configuration files for static pods are placed directly on the node's file system, and the `kubelet` watches these files.
-- **Some examples of static pods are:** ApiServer, Kube-scheduler, controller-manager, ETCD etc
-  
-### Managing Static Pods:
-1. **SSH into the Node**: You will gain access to the node where the static pod is defined.(Mostly the control plane node)
-2. **Modify the YAML File**: Edit or create the YAML configuration file for the static pod.
-3. **Remove the Scheduler YAML**: To stop the pod, you must remove or modify the corresponding file directly on the node.
-4. **Default location**": is usually `/etc/kubernetes/manifests/`; you can place the pod YAML in the directory, and Kubelet will pick it for scheduling.
+---
 
-## 🧭 Manual Pod Scheduling
+## Tolerations: Permission Slips for Pods ✅
 
-Manual scheduling in Kubernetes involves assigning a pod to a specific node rather than letting the scheduler decide.
+Toleration allows a pod to say, "Hey, I can handle that taint. Schedule me anyway!" You define tolerations in the pod specification to let them bypass the taints.
 
-### Key Points:
-- **`nodeName` Field**: Use this field in the pod specification to specify the node where the pod should run.
-- **No Scheduler Involvement**: When `nodeName` is specified, the scheduler bypasses the pod, and it’s directly assigned to the given node.
+---
 
-### Example Configuration:
+## Taints & Tolerations in Action 🎬
+
+Here’s a breakdown of the commands to manage taints and tolerations:
+
+### Tainting a Node:
+
+```bash
+kubectl taint nodes node1 key=gpu:NoSchedule
+```
+
+This command taints node1 with the key "gpu" and the effect "NoSchedule." Pods without a toleration for this taint won't be scheduled there.
+
+To remove the taint , you add - at the end of the command , like below.
+
+```bash
+kubectl taint nodes node1 key=gpu:NoSchedule-
+```
+
+### Adding toleration to the pod:
+
 ```yaml
 apiVersion: v1
 kind: Pod
 metadata:
-  name: manual-scheduled-pod
+  labels:
+    run: redis
+  name: redis
 spec:
-  nodeName: worker-node-1
   containers:
-  - name: nginx
-    image: nginx
+  - image: redis
+    name: redis
+  tolerations:
+  - key: "gpu"
+    operator: "Equal"
+    value: "true"
+    effect: "NoSchedule"
 ```
 
->Note: Kubernetes will place the pod on worker-node-1 with the above configuration.
+>Note: This pod specification defines a toleration for the "gpu" taint with the effect "NoSchedule." This allows the pod to be scheduled on tainted nodes.
 
+### Labels vs Taints/Tolerations
 
+Labels group nodes based on size, type,env, etc. Unlike taints, labels don't directly affect scheduling but are useful for organizing resources.
+
+### Limitations to Remember 🚧
+
+Taints and tolerations are powerful tools, but they have limitations. They cannot handle complex expressions like "AND" or "OR." 
+So, what do we use in that case? We use a combination of Taints, tolerance, and Node affinity, which we will discuss in the next video.
