@@ -51,3 +51,14 @@ spec:
           key: firstname
     command: ['sh', '-c', 'echo The app is running! && sleep 3600']
 ```
+
+#### Sample command to create secret
+
+Create a secret for prod environment credentials:
+```
+kubectl create secret generic prod-db-secret --from-literal=username=produser --from-literal=password=Y4nys7f11
+
+kubectl create secret generic test-db-secret --from-literal=username=testuser --from-literal=password=iluvtests
+
+kubectl apply -f pod-secret.yaml
+```
