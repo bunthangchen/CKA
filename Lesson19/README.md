@@ -61,4 +61,8 @@ kubectl create secret generic prod-db-secret --from-literal=username=produser --
 kubectl create secret generic test-db-secret --from-literal=username=testuser --from-literal=password=iluvtests
 
 kubectl apply -f pod-secret.yaml
+
+kubectl exec -it test-db-client-pod -- /bin/bash
+kubectl exec -it prod-db-client-pod -- /bin/bash
+
 ```
