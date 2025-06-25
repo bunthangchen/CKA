@@ -28,16 +28,57 @@ openssl genrsa -out adam.key 2048
 ```
 openssl req -new -key adam.key -out adam.csr -subj "/CN=adam"
 ```
+**To output csr**
+```
+cat adam.csr | base64 | tr -d "\n"
+```
+
+cat <<EOF | kubectl apply -f -
+apiVersion: certificates.k8s.io/v1
+kind: CertificateSigningRequest
+metadata:
+  name: adam
+spec:
+  request: <base64_encoded_csr>
+  signerName: kubernetes.io/kube-apiserver-client
+  expirationSeconds: 86400  # one day
+  usages:
+  - digital signature
+  - key encipherment
+  - client auth
+EOF
+
 
 **To approve a csr**
 ```
-kubectl certificate approve <certificate-signing-request-name>
+kubectl certificate approve adam
 ```
 
-**To deny a csr**
+**Extract the signed certificate from the CertificateSigningRequest**
 ```
-kubectl certificate deny <certificate-signing-request-name>
+kubectl get csr/adam -o jsonpath="{.status.certificate}" | base64 -d > adam.crt
 ```
+
+**Create new user config file**
+```
+kubectl --kubeconfig config-adam config set-cluster cluster.local  --server=https://127.0.0.1:6443
+kubectl --kubeconfig config-adam config set-credentials adam --client-certificate=adam.crt --client-key=adam.key --embed-certs=true
+kubectl --kubeconfig config-adam config set-context kubernetes-admin@cluster.local --cluster=cluster.local --user=adam
+cat /etc/kubernetes/admin.conf
+vi config-adam
+
+- cluster:
+    certificate-authority-data: <base64_encoded_ca>
+```
+***To Create clusterrolebinding**
+```
+kubectl create clusterrolebinding adam-binding --clusterrole=cluster-admin --user=adam
+```
+***To test kubeconfig**
+```
+kubectl --kubeconfig config-adam get pods
+```
+
 
 **Below document can also be referred**
 
