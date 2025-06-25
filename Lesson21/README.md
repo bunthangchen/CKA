@@ -32,7 +32,8 @@ openssl req -new -key adam.key -out adam.csr -subj "/CN=adam"
 ```
 cat adam.csr | base64 | tr -d "\n"
 ```
-
+**To create CertificateSigningRequest**
+```
 cat <<EOF | kubectl apply -f -
 apiVersion: certificates.k8s.io/v1
 kind: CertificateSigningRequest
@@ -48,7 +49,7 @@ spec:
   - client auth
 EOF
 
-
+```
 **To approve a csr**
 ```
 kubectl certificate approve adam
