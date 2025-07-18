@@ -9,14 +9,16 @@ Create a script that uses etcdctl to take a snapshot of your etcd data. Save thi
 
 Ensure the script is executable:
 
-# chmod +x /path/to/etcd-backup.sh
-
+```
+chmod +x /path/to/etcd-backup.sh
+```
 
 3. Set Up a Cron Job
 
 Open the crontab editor:
-
-# crontab -e
+```
+crontab -e
+```
 
 Add a cron job to run the backup script at your desired interval. For example, to run the script daily at midnight
 
@@ -29,7 +31,8 @@ After the cron job runs, check the backup directory to ensure that the snapshots
 5. Test the Restore Process:
 It’s important to periodically test the restore process to ensure that your backups are valid. You can restore a snapshot using the following command:
 
-# etcdctl snapshot restore /backups/etcd-snapshot-20241018.db --data-dir /var/lib/etcd
-
+```
+etcdctl snapshot restore /backups/etcd-snapshot-20241018.db --data-dir /var/lib/etcd
+```
 
 By following these steps, you can automate the backup process for your etcd cluster and ensure that your data is regularly backed up
